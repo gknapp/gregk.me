@@ -39,24 +39,26 @@ class ContactForm extends Component {
     })
   }
 
+  renderResponse(message) {
+    return (
+      <div className="response" data-aos="fade-up">
+        {message}
+      </div>
+    )
+  }
+
   render() {
     const { handleSubmit } = this.props
     const { submitted, error } = this.state
 
     if (submitted) {
       if (error) {
-        return (
-          <div className="response" data-aos="fade-up">
-            Sorry, there was an problem sending your message :(
-          </div>
+        return this.renderResponse(
+          "Sorry, there was an problem sending your message :("
         )
       }
 
-      return (
-        <div className="response" data-aos="fade-up">
-          Thanks for your message!
-        </div>
-      )
+      return this.renderResponse("Thanks for your message!")
     }
 
     return (
