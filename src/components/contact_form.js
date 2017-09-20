@@ -65,7 +65,7 @@ class ContactForm extends Component {
         <Field label="E-mail address" name="email" component={FormField} delay="150" />
         <Field label="Message" name="body" type="textarea" component={FormField} delay="300" />
         <div className="form-group" data-aos="fade-up" data-aos-delay="425">
-          <div className="g-recaptcha" data-sitekey="6LcYti0UAAAAAK0YCTboNHeNExyLPzNPctHfhUlT"></div>
+          <div className="g-recaptcha" data-sitekey="6LdsczEUAAAAADLap7YTrY-5VblRxL4GW1b4RR3m"></div>
         </div>
         <button type="submit" className="btn btn-custom-1"
           data-aos="fade-up" data-aos-delay="500" data-aos-offset="200">
