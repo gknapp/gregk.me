@@ -5,7 +5,7 @@ const BAD_REQUEST = 400
 
 export function sendMessage(values, next) {
   axios.post(
-    "https://api.shiftleft.ltd/contact", values
+    `https://${process.env.API_HOST}/contact`, values
   ).then(
     (response) => next(response.status)
   ).catch(
