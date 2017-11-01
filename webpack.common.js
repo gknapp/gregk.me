@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const webpack = require("webpack")
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin")
 
 module.exports = {
   entry: __dirname + "/src/index.js",
@@ -54,6 +55,9 @@ module.exports = {
       jQuery: 'jquery',
       AOS: 'aos'
     }),
-    new ExtractTextPlugin("style.css")
+    new ExtractTextPlugin("style.css"),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: "async"
+    })
   ]
 }
