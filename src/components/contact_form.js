@@ -32,7 +32,7 @@ class ContactForm extends Component {
       }
 
       if (httpCode !== 200) {
-        state = {state, ...{ error: true }}
+        state = { ...state, error: true }
       }
 
       this.setState(state)
