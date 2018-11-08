@@ -9,4 +9,4 @@ import "js/custom"
 
 // import JS and meta images so file-loader copies them to dist
 import "images/bookshelf.jpg"
-import "images/twitter.png"
+import "images/twitter.jpg"
