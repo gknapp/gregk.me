@@ -1,9 +1,14 @@
-const webpack = require("webpack")
 const merge = require("webpack-merge")
 const common = require("./webpack.common.js")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const TerserPlugin = require("terser-webpack-plugin")
 
 module.exports = merge(common, {
+  mode: "production",
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       minify: {
@@ -11,12 +16,6 @@ module.exports = merge(common, {
       },
       hash: true,
       template: "./src/index.html"
-    }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify("production")
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin()
+    })
   ]
 })

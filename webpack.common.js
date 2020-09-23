@@ -1,11 +1,10 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const webpack = require("webpack")
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin")
+const CssExtract = require("mini-css-extract-plugin")
 
 module.exports = {
-  entry: __dirname + "/src/index.js",
+  entry: "./src/index.js",
   output: {
-    path: __dirname + "/dist",
+    path: __dirname + "/build",
     filename: "js/bundle.js"
   },
   resolve: {
@@ -23,16 +22,14 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['env']
+            presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-proposal-object-rest-spread"]
           }
         }
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        use: [CssExtract.loader, "css-loader"]
       },
       {
         test: /\.(woff2?|ttf|eot|gif|jpe?g|png|svg)$/i,
@@ -45,19 +42,18 @@ module.exports = {
         test: /\.html$/,
         loader: "html-loader",
         options: {
-          removeComments: true
+          minimize: {
+            removeComments: true
+          }
         }
       }
     ]
   },
   plugins: [
+    new CssExtract(),
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       AOS: 'aos'
-    }),
-    new ExtractTextPlugin("style.css"),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: "async"
     })
   ]
 }
